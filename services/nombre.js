@@ -2,8 +2,7 @@ let responseNombreSexo = function(req,res){
     try{
         const {nombre,apellido_p,apellido_m,sexo} = req.body;
 
-        datos_formateados = formatDatos(sexo,nombre, apellido_p, apellido_m);
-        arreglo_datos = datos_formateados.split(" ");
+        arreglo_datos = formatDatos(sexo,nombre, apellido_p, apellido_m);
         mensaje = detSexo(arreglo_datos[0]);
 
         console.log('[Respuesta al cliente]',mensaje,arreglo_datos[1], arreglo_datos[2], arreglo_datos[3]);
@@ -42,8 +41,8 @@ function formatDatos (sexo,nombre, apellido_p,apellido_m){
     apellidoPLowerU=(apellidoPLower.charAt(0).toUpperCase() + apellidoPLower.slice(1));
     apellidoMLowerU=(apellidoMLower.charAt(0).toUpperCase() + apellidoMLower.slice(1));
 
-    let respuesta = sexoLower + " " + finalNombre + " " + apellidoPLowerU + " " + apellidoMLowerU
-    console.log("[datos formateados]",sexoLower + " " + finalNombre + " " + apellidoPLowerU + " " + apellidoMLowerU )
+    let respuesta = [sexoLower, finalNombre,apellidoPLowerU,apellidoMLowerU]
+    //console.log("[datos formateados]",sexoLower + " " + finalNombre + " " + apellidoPLowerU + " " + apellidoMLowerU )
     return(respuesta);
 }
     
