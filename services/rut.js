@@ -1,7 +1,7 @@
 let formatear = function(rut){
     let rutSinGuion=""
     try{
-        for(i = 0; i<rut.length; i ++){
+        for(let i = 0; i<rut.length; i ++){
             if(rut[i] !="." && rut[i] !="-"){
                 rutSinGuion += rut[i] 
             }
@@ -32,7 +32,7 @@ function validar_dv(rut){
     let div = (Math.trunc(multi/11))*11;
     let rest = multi - div;
 
-    dv= 11-rest;
+    let dv= 11-rest;
     if(dv == 11){
         dv = 0;
     }else if(dv == 10){
