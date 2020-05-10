@@ -2,8 +2,8 @@ let responseNombreSexo = function(req,res){
     try{
         const {nombre,apellido_p,apellido_m,sexo} = req.body;
 
-        arreglo_datos = formatDatos(sexo,nombre, apellido_p, apellido_m);
-        mensaje = detSexo(arreglo_datos[0]);
+        let arreglo_datos = formatDatos(sexo,nombre, apellido_p, apellido_m);
+        let mensaje = detSexo(arreglo_datos[0]);
 
         console.log('[Respuesta al cliente]',mensaje,arreglo_datos[1], arreglo_datos[2], arreglo_datos[3]);
         res.json({
@@ -32,17 +32,17 @@ function formatDatos (sexo,nombre, apellido_p,apellido_m){
     let sexoLower = sexo.toLowerCase();
     console.log('Datos Ingresados correctamente');
     let nombres = nombreLower.split(" ");
-    for(i =0; i < nombres.length; i++){
+    for(let i =0; i < nombres.length; i++){
         let nombreLowerU = (nombres[i].charAt(0).toUpperCase() + nombres[i].slice(1));
         finalNombre = finalNombre +  " " + nombreLowerU ;
     }
     
     finalNombre = finalNombre.slice(1);
-    apellidoPLowerU=(apellidoPLower.charAt(0).toUpperCase() + apellidoPLower.slice(1));
-    apellidoMLowerU=(apellidoMLower.charAt(0).toUpperCase() + apellidoMLower.slice(1));
+    let apellidoPLowerU=(apellidoPLower.charAt(0).toUpperCase() + apellidoPLower.slice(1));
+    let apellidoMLowerU=(apellidoMLower.charAt(0).toUpperCase() + apellidoMLower.slice(1));
 
     let respuesta = [sexoLower, finalNombre,apellidoPLowerU,apellidoMLowerU]
-    //console.log("[datos formateados]",sexoLower + " " + finalNombre + " " + apellidoPLowerU + " " + apellidoMLowerU )
+    console.log("[datos formateados]",respuesta[0] + " " + respuesta[1] + " " + respuesta[2] + " " + respuesta[3])
     return(respuesta);
 }
     
@@ -51,12 +51,9 @@ function detSexo(sexoLower){
         case "m":
             console.log("[Determina sexo]", "Entrada: ", sexoLower, "- Salida: Sr", )
             return "Sr";
-            break;
         case "f": 
             console.log("[Determina sexo]", "Entrada:", sexoLower, "- Salida: Sra")
             return "Sra";
-            break;
-
         default:
             console.log("El dato de sexo ha sido completado de forma erronea")       
     }

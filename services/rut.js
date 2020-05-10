@@ -1,5 +1,5 @@
 let formatear = function(rut){
-    rutSinGuion=""
+    let rutSinGuion=""
     try{
         for(i = 0; i<rut.length; i ++){
             if(rut[i] !="." && rut[i] !="-"){
@@ -22,15 +22,15 @@ function validar_dv(rut){
     let rutFormateado = formatear(rut)
 
     //Aqui empieza el algoritmo de calculo del DV
-    for(i = rutFormateado.length -2; i >= 0; i--){ 
+    for(let i = rutFormateado.length -2; i >= 0; i--){ 
         invert = invert + rutFormateado[i];
     }
-    for(i = 0; i<=invert.length-1; i ++){
+    for(let i = 0; i<=invert.length-1; i ++){
         multi = multi + (Number(invert[i] * secuencia[i])); 
         
     }
-    div = (Math.trunc(multi/11))*11;
-    rest = multi - div;
+    let div = (Math.trunc(multi/11))*11;
+    let rest = multi - div;
 
     dv= 11-rest;
     if(dv == 11){
@@ -44,7 +44,7 @@ function validar_dv(rut){
 
 let response_validar_rut = function(req, res){
     let {rut} = req.body
-    dv = validar_dv(rut)
+    let dv = validar_dv(rut)
     if(rut[rut.length - 1] == dv){
         console.log('[respuesta al cliente]: V')//V = valido
         res.json({
